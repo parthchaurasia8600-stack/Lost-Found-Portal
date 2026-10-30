@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RRiMT | Lost &amp; Found</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="RRiMT Lost and Found home"><img class="brand-logo" src="college-logo.png" alt="RR Group of Institutions logo"> <span>RRiMT</span></a>
+    <div class="topbar-actions">
+      <span class="top-note">College Lost &amp; Found Portal</span>
+      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to dark theme" title="Switch theme"><span class="theme-icon" aria-hidden="true">☾</span><span class="theme-label">Dark mode</span></button>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div>
+        <p class="eyebrow">YOUR CAMPUS, CONNECTED</p>
+        <h1>Lost something?<br><span>Let's find it.</span></h1>
+        <p class="hero-copy">A simple place for students to report lost items and help return found belongings to their owners.</p>
+        <a class="primary-link" href="#report-form">＋ Report an item</a>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="art-circle"></div>
+        <div class="art-card card-back">✦</div>
+        <div class="art-card card-front"><span class="id-chip"></span><strong>STUDENT ID</strong><small>CAMPUS CARD</small><span class="art-avatar">☺</span></div>
+        <div class="spark spark-one">✦</div><div class="spark spark-two">✧</div>
+      </div>
+    </section>
+
+    <section class="stats" aria-label="Item summary">
+      <article class="stat"><span class="stat-icon purple">⌕</span><div><p>Open listings</p><strong id="open-count">0</strong></div></article>
+      <article class="stat"><span class="stat-icon orange">◎</span><div><p>Lost items</p><strong id="lost-count">0</strong></div></article>
+      <article class="stat"><span class="stat-icon green">✓</span><div><p>Found items</p><strong id="found-count">0</strong></div></article>
+    </section>
+
+    <section class="content-grid">
+      <section class="panel listings-panel">
+        <div class="section-heading">
+          <div><p class="eyebrow">COMMUNITY BOARD</p><h2>Recent listings</h2></div>
+          <span class="live-dot">Live list</span>
+        </div>
+        <div class="filters">
+          <label class="search-box"><span>⌕</span><input id="search-input" type="search" placeholder="Search item or location..."></label>
+          <select id="type-filter" aria-label="Filter by item type">
+            <option value="">All items</option><option value="Lost">Lost</option><option value="Found">Found</option>
+          </select>
+        </div>
+        <div id="items-list" class="items-list">
+          <div class="loading">Loading items...</div>
+        </div>
+        <p class="footnote">Please verify ownership before collecting an item.</p>
+      </section>
+
+      <aside class="panel form-panel" id="report-form">
+        <p class="eyebrow">HELP THE COMMUNITY</p>
+        <h2>Report an item</h2>
+        <p class="form-intro">Share a few details so the right person can find it.</p>
+        <form id="item-form">
+          <label for="item_name">Item name <span>*</span></label>
+          <input id="item_name" name="item_name" required maxlength="100" placeholder="e.g. Blue water bottle">
+          <label>Listing type <span>*</span></label>
+          <div class="type-choice">
+            <label class="choice"><input type="radio" name="item_type" value="Lost" checked><span>⌕ Lost</span></label>
+            <label class="choice"><input type="radio" name="item_type" value="Found"><span>✓ Found</span></label>
+          </div>
+          <label for="location">Location <span>*</span></label>
+          <input id="location" name="location" required maxlength="150" placeholder="e.g. Library, Block B">
+          <label for="item_date">Date</label>
+          <input id="item_date" name="item_date" type="date">
+          <label for="description">Description</label>
+          <textarea id="description" name="description" rows="3" maxlength="1000" placeholder="Colour, brand, or other identifying details"></textarea>
+          <button class="submit-btn" type="submit">Submit listing <span>→</span></button>
+          <p id="form-message" class="form-message" role="status"></p>
+        </form>
+      </aside>
+    </section>
+    <footer>Made for a more helpful campus <span>♥</span> <small>PARTH project demo</small></footer>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
