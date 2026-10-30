@@ -36,12 +36,52 @@ function escapeHtml(value = "") {
   })[char]);
 }
 
+// function niceDate(value) {
+//   if (!value) return "Date not provided";
+//   const date = new Date(value);
+//   return Number.isNaN(date.getTime()) ? escapeHtml(value) :
+//     date.toLocaleDateString(undefined, { day: "numeric", month: "short", year: "numeric", timeZone: "UTC" });
+// }
+
+
 function niceDate(value) {
   if (!value) return "Date not provided";
-  const date = new Date(value);
-  return Number.isNaN(date.getTime()) ? escapeHtml(value) :
-    date.toLocaleDateString(undefined, { day: "numeric", month: "short", year: "numeric", timeZone: "UTC" });
+
+  // Convert value to string and extract YYYY-MM-DD
+  const datePart = String(value).slice(0, 10);
+
+  const parts = datePart.split("-");
+
+  if (parts.length !== 3) {
+    return escapeHtml(value);
+  }
+
+  const year = Number(parts[0]);
+  const month = Number(parts[1]);
+  const day = Number(parts[2]);
+
+  // Validate date
+  const date = new Date(year, month - 1, day);
+
+  if (
+    !year ||
+    !month ||
+    !day ||
+    date.getFullYear() !== year ||
+    date.getMonth() !== month - 1 ||
+    date.getDate() !== day
+  ) {
+    return escapeHtml(value);
+  }
+
+  // Display date without timezone shifting
+  return date.toLocaleDateString("en-IN", {
+    day: "numeric",
+    month: "short",
+    year: "numeric"
+  });
 }
+
 
 async function loadItems() {
   list.innerHTML = '<div class="loading">Loading items...</div>';
