@@ -61,7 +61,7 @@ function niceDate(value) {
   const day = Number(parts[2]);
 
   // Validate date
-  const date = new Date(year, month - 1, day);
+  const date = new Date(year, month - 1, day+1);
 
   if (
     !year ||
@@ -69,7 +69,7 @@ function niceDate(value) {
     !day ||
     date.getFullYear() !== year ||
     date.getMonth() !== month - 1 ||
-    date.getDate() !== day
+    date.getDate() !== day+1
   ) {
     return escapeHtml(value);
   }

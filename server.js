@@ -85,5 +85,5 @@ app.use((req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`College Lost & Found Portal running at http://localhost:${PORT}`);
+  console.log(`College Lost & Found Portal running at http://10.19.236.12:${PORT}`);
 });
